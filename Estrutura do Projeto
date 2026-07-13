@@ -1,0 +1,80 @@
+ projeto está organizado nas seguintes fases e diretórios:
+
+```
+erp-oracle-database
+├── docs
+│   ├── DER.png
+│   ├── ModeloRelacional.pdf
+│   └── DicionarioDados.pdf
+│
+├── sql
+│   ├── 01_create_tables.sql
+│   ├── 02_constraints.sql
+│   ├── 03_sequences.sql
+│   ├── 04_views.sql
+│   ├── 05_functions.sql
+│   ├── 06_procedures.sql
+│   ├── 07_triggers.sql
+│   ├── 08_indexes.sql
+│   ├── 09_consultas.sql
+│   └── 10_carga_dados.sql
+│
+├── powerbi
+│   ├── dashboard.pbix
+│   └── imagens
+│
+└── README.md
+```
+
+## Fases do Projeto
+
+### Fase 1 – Planejamento
+Levantamento dos requisitos para o sistema, incluindo controle de clientes, funcionários, fornecedores, produtos, estoque, compras, vendas, pagamentos, relatórios gerenciais e auditoria.
+
+### Fase 2 – Modelagem
+Criação da estrutura do banco de dados com aproximadamente 15 tabelas, abrangendo as seguintes entidades:
+- Cliente, Endereço, Funcionário, Cargo, Fornecedor, Categoria, Produto, Compra, ItemCompra, Venda, ItemVenda, Pagamento, Usuário, Perfil, Auditoria.
+
+Os scripts SQL para esta fase incluem:
+- `01_create_tables.sql`: Definição das tabelas.
+- `02_constraints.sql`: Definição de chaves primárias, estrangeiras e outras restrições.
+- `03_sequences.sql`: Criação de sequências para IDs (quando não utilizado `IDENTITY`).
+- `08_indexes.sql`: Criação de índices para otimização de consultas.
+
+### Fase 3 – Regras de Negócio e Automações (PL/SQL)
+Implementação de lógica de negócios e automações utilizando PL/SQL para garantir a integridade e o comportamento esperado do sistema. Isso inclui:
+- **Procedures**: Cadastro de cliente, cadastro de produto, realização de venda, cancelamento de venda, reposição de estoque.
+- **Functions**: Calcular desconto, calcular comissão, verificar cliente VIP.
+- **Triggers**: Atualizar estoque após venda, registrar auditoria em alterações de produtos, bloquear exclusão de clientes com vendas.
+
+Os scripts SQL para esta fase incluem:
+- `05_functions.sql`: Implementação das funções PL/SQL.
+- `06_procedures.sql`: Implementação das procedures PL/SQL.
+- `07_triggers.sql`: Implementação dos triggers PL/SQL.
+
+### Fase 4 – Consultas Avançadas
+Desenvolvimento de consultas SQL complexas para extrair informações gerenciais e analíticas, utilizando recursos como JOIN, GROUP BY, HAVING, CASE, CTE, ROW_NUMBER, RANK e funções analíticas. Exemplos de consultas:
+- Top 10 produtos mais vendidos.
+- Ranking de vendedores.
+- Faturamento mensal.
+- Ticket médio por cliente.
+- Produtos com estoque abaixo do mínimo.
+- Clientes que não compram há mais de 6 meses.
+- Lucro por categoria.
+- Fornecedores com mais compras.
+- Produtos parados no estoque.
+
+Os scripts SQL para esta fase incluem:
+- `04_views.sql`: Criação de views para consultas comuns.
+- `09_consultas.sql`: Consultas analíticas avançadas.
+
+### Fase 5 – Carga de Dados Fictícios
+Geração de um volume significativo de dados fictícios para simular um ambiente de produção e testar o desempenho das consultas e da lógica de negócios. Inclui:
+- 20.000 clientes.
+- 5.000 produtos.
+- 300 fornecedores.
+- 80.000 vendas.
+
+O script SQL para esta fase é:
+- `10_carga_dados.sql`: Script PL/SQL para inserção massiva de dados.
+
